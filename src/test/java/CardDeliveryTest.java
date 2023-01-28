@@ -7,11 +7,12 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class CardDeliveryTest {
-    private String generateDate(int days) {
+    public String generateDate(int days) {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
@@ -28,8 +29,7 @@ public class CardDeliveryTest {
         $("[name='phone']").setValue("+79107852369");
         $("[data-test-id='agreement']").click();
         $("button.button").click();
-        //$(".notification__content");
-        $("div[data-test-id=notification").shouldBe(Condition.visible, Duration.ofMillis(15000));
+        $(".notification__content").shouldBe(Condition.visible, Duration.ofSeconds(15));
         $("div[data-test-id=notification").shouldHave(Condition.exactText("Встреча успешно забронирована на " + currentDate));
 
     }
