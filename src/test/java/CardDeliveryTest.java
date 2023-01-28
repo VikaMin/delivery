@@ -30,7 +30,7 @@ public class CardDeliveryTest {
         $("[data-test-id='agreement']").click();
         $("button.button").click();
         $(".notification__content").shouldBe(Condition.visible, Duration.ofSeconds(15));
-        $("div[data-test-id=notification").shouldHave(Condition.exactText("Встреча успешно забронирована на " + currentDate));
+        $("div[data-test-id=notification").shouldHave(Condition.exactText("Успешно! Встреча успешно забронирована на " + currentDate));
 
     }
 }
